@@ -32,4 +32,4 @@ $srcs = ["src/AnimationBlender.cc",
 $objs = $srcs.collect {|o| o.sub(/\.cpp|\.cc|\.cxx/, ".o")}
 $cleanfiles = $objs
 
-create_makefile('teienlib')
+create_makefile('Teienlib')
