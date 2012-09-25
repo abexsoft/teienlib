@@ -1,0 +1,27 @@
+SWIG = 'swig'
+
+BULLET_TOP =  `ruby -e "require 'BulletConfig'; print BulletConfig.getTopDir"`
+BULLET_INC = `ruby -e "require 'BulletConfig'; print BulletConfig.getIncFlags"`
+
+OGRE_TOP = `ruby -e "require 'OgreConfig'; print OgreConfig.getTopDir"`
+OGRE_INC = `ruby -e "require 'OgreConfig'; print OgreConfig.getIncFlags"`
+
+SWIGFLAGS = "-ruby -c++ #{BULLET_INC} #{OGRE_INC} -I../src/ -I#{BULLET_TOP}/bindings/bullet/interface -I#{OGRE_TOP}/bindings/ogre/interface"
+
+
+TARGET = 'teienlib_wrap.cpp'
+
+puts SWIGFLAGS
+
+
+task :default => "#{TARGET}"
+
+file "#{TARGET}" => "teienlib.i" do |t|
+  sh "#{SWIG} #{SWIGFLAGS} -o  #{t.name} #{t.prerequisites[0]}"
+end
+
+
+task :clean do
+  sh "rm -f #{TARGET}"
+end
+
