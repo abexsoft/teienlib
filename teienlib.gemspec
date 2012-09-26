@@ -5,7 +5,7 @@ require 'teienlib/version'
 Gem::Specification.new do |gem|
   gem.name          = "teienlib"
   gem.version       = Teienlib::VERSION
-  gem.authors       = ["abexsoft"]
+  gem.authors       = ["abexsoft works"]
   gem.email         = ["abexsoft@gmail.com"]
   gem.description   = %q{An extension library for Teien.}
   gem.summary       = %q{An extension library for Teien.}
@@ -21,6 +21,9 @@ Gem::Specification.new do |gem|
                           'ext/teienlib/interface/*.i', 
                           'ext/teienlib/interface/Rakefile', 
                           'ext/teienlib/src/*.{cc,h}', 
+                          'sample/hello/*.rb',
+                          'sample/hello/*.cfg',
+                          'sample/hello/hello',
                           'lib/**/*', 
                          ]
 
