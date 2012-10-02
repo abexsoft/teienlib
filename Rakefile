@@ -4,18 +4,18 @@ require 'rake/clean'
 DLEXT = RbConfig::MAKEFILE_CONFIG['DLEXT']
 
 desc 'Compile a teienlib extension library'
-task "compile" => ["lib/Teienlib.#{DLEXT}"] 
+task "compile" => ["lib/teienlib.#{DLEXT}"] 
 
 ## lib/*.#{DLEXT}
-file "lib/Teienlib.#{DLEXT}" => "ext/teienlib/Teienlib.#{DLEXT}" do |f|
+file "lib/teienlib.#{DLEXT}" => "ext/teienlib/teienlib.#{DLEXT}" do |f|
   cp f.prerequisites, "lib/", :preserve => true
 end
 
 ## ext/**/*.#{DLEXT}
-file "ext/teienlib/Teienlib.#{DLEXT}" => FileList["ext/teienlib/Makefile"] do |f|
+file "ext/teienlib/teienlib.#{DLEXT}" => FileList["ext/teienlib/Makefile"] do |f|
   sh 'cd ext/teienlib/ && make clean && make'
 end
-CLEAN.include 'ext/Teienlib/*.{o,so,dll}'
+CLEAN.include 'ext/teienlib/*.{o,so,dll}'
 
 ## ext/**/Makefile
 file 'ext/teienlib/Makefile' => FileList['ext/teienlib/interface/teienlib_wrap.cpp'] do

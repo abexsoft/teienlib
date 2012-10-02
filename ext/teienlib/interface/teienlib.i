@@ -1,4 +1,4 @@
-%module(directors="1") "Teienlib"
+%module(directors="1") "teienlib"
 
 //#define DEBUG_FREEFUNC
 

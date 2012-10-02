@@ -1,17 +1,17 @@
 #
 # Key Listener
 #
-class KeyListener < OIS::KeyListener
+class KeyListener < Ois::KeyListener
   def initialize(listener)
     super()
     @listener = listener
   end
   
-  def keyPressed(keyEvent)
+  def key_pressed(keyEvent)
     return @listener.key_pressed(keyEvent)
   end
   
-  def keyReleased(keyEvent)
+  def key_released(keyEvent)
     return @listener.key_released(keyEvent)
   end
 end
@@ -19,21 +19,21 @@ end
 #
 # Mouse Listener
 #
-class MouseListener < OIS::MouseListener
+class MouseListener < Ois::MouseListener
   def initialize(listener)
     super()
     @listener = listener
   end
   
-  def mouseMoved(evt)
+  def mouse_moved(evt)
     return @listener.mouse_moved(evt)
   end
   
-  def mousePressed(mouseEvent, mouseButtonID)
+  def mouse_pressed(mouseEvent, mouseButtonID)
     return @listener.mouse_pressed(mouseEvent, mouseButtonID)
   end
   
-  def mouseReleased(mouseEvent, mouseButtonID)
+  def mouse_released(mouseEvent, mouseButtonID)
     return @listener.mouse_released(mouseEvent, mouseButtonID)
   end
 end
@@ -41,25 +41,25 @@ end
 #
 # Tray Listener
 #
-class TrayListener < OgreBites::SdkTrayListener
+class TrayListener < Ogrebites::SdkTrayListener
   def initialize(listener)
     super()
     @listener = listener
   end
 
-  def buttonHit(button)
+  def button_hit(button)
     @listener.button_hit(button)
   end
 
-  def itemSelected(menu)
+  def item_selected(menu)
     @listener.item_selected(menu)
   end
 
-  def yesNoDialogClosed(name, bl)
+  def yes_no_dialog_closed(name, bl)
     @listener.yes_no_dialog_closed(name, bl)
   end
 
-  def okDialogClosed(name)
+  def ok_dialog_closed(name)
     @listener.ok_dialog_closed(name)
   end
 end
