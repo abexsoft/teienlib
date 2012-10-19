@@ -4,3 +4,5 @@ FILE_PATH=`dirname "$0"`
 OGRE_LIB=`ruby -e "require 'ogre_config'; print OgreConfig.get_deps_lib_path"`
 
 LD_LIBRARY_PATH=$OGRE_LIB:$LD_LIBRARY_PATH ruby $FILE_PATH/hello.rb
+
+#LD_LIBRARY_PATH=$OGRE_LIB:$LD_LIBRARY_PATH gdb ruby 

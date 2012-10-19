@@ -1,4 +1,6 @@
 class Floor < Bullet::BtMotionState
+  attr_accessor :rigid_body
+
   def initialize(dynamicsWorld, sceneMgr)
     super()
 

@@ -1,11 +1,11 @@
 
 $LOAD_PATH.push(File.dirname(File.expand_path(__FILE__)) + "/../../lib")
 
+require "bullet"
 require "ogre"
 require "ois"
 require "ogrebites"
 require "procedural"
-require "bullet"
 require "ogre_config"
 
 require_relative "ui_listener"
@@ -135,6 +135,15 @@ class World < Ogre::FrameListener
     @tray_mgr.hide_cursor()
   end
 
+  def finalize()
+    # patch for GC.
+    @dynamics_world.remove_rigid_body(@floor.rigid_body)
+    @boxes.each{|box|
+      @dynamics_world.remove_rigid_body(box.rigid_body)
+    }
+    @boxes = []
+  end
+
   def run
     # set background and some fog
     @vp.set_background_colour(Ogre::ColourValue.new(1.0, 1.0, 0.8))
@@ -177,6 +186,7 @@ class World < Ogre::FrameListener
     }
 
     @root.start_rendering()
+    finalize()
   end
 
   def shot_box()

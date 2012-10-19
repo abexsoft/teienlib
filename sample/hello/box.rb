@@ -2,6 +2,7 @@ class Box < Bullet::BtMotionState
   @@cnt = 0
 
   attr_accessor :id
+  attr_accessor :rigid_body
 
   def initialize(dynamics_world, scene_mgr, mass, x, y, z, color)
     super() # needed by Bullet::BtMotionState
