@@ -1,23 +1,22 @@
 require 'mkmf'
+require "ruby-bullet"
+require "ruby-ois"
+require "ruby-ogre"
 
 # set values of INC and LIB.
-require 'BulletConfig'
-require 'OgreConfig'
-BULLET_INC = BulletConfig.getIncFlags()
-BULLET_LIB = "-L" + BulletConfig.getDepsLibPath()
+BULLET_INC = Ruby::Bullet::get_inc_flags
+BULLET_LIB = Ruby::Bullet::get_lib_flags
 
-OGRE_INC = OgreConfig.getIncFlags()
-OGRE_LIB = "-L" + OgreConfig.getDepsLibPath()
-
-
+OGRE_INC = Ruby::Ogre::get_inc_flags
+OGRE_LIB = Ruby::Ogre::get_lib_flags
 
 # set flags
-$CFLAGS += " -g " + BULLET_INC + " " + OGRE_INC + " -I./src/"
+$CFLAGS += " -g #{BULLET_INC} #{OGRE_INC} -I./src/"
 
 if (/mingw/ =~ RUBY_PLATFORM)
-  $LDFLAGS += " -static-libgcc -static-libstdc++ " + BULLET_LIB + " " + OGRE_LIB + " -lws2_32 -lwinmm"
+  $LDFLAGS += " -static-libgcc -static-libstdc++ #{BULLET_LIB} #{OGRE_LIB} -lws2_32 -lwinmm"
 else
-  $LDFLAGS += " -static-libgcc -static-libstdc++ " + BULLET_LIB + " " + OGRE_LIB
+  $LDFLAGS += " -static-libgcc -static-libstdc++ #{BULLET_LIB} #{OGRE_LIB}"
 end
 
 $srcs = ["src/AnimationBlender.cc",

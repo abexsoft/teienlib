@@ -16,9 +16,15 @@ Or install it yourself as:
 
     $ gem install teienlib
 
-## Usage
+## How to install from source.
 
-see [INSTALL.md](https://github.com/abexsoft/teienlib/blob/master/INSTALL.md)
+If you want to compile from source, try the following.
+
+    $ git clone git://github.com/abexsoft/teienlib.git 
+    $ cd teienlib
+    $ rake build 
+    $ gem build teienlib.gemspec
+    $ gem install teienlib-<version>-<arch>.gem 
 
 ## Contributing
 

@@ -1,12 +1,8 @@
+require 'ruby-bullet'
+require 'ruby-ogre'
+
 SWIG = 'swig'
-
-BULLET_TOP =  `ruby -e "require 'bullet_config'; print BulletConfig.get_top_dir"`
-BULLET_INC = `ruby -e "require 'bullet_config'; print BulletConfig.get_inc_flags"`
-
-OGRE_TOP = `ruby -e "require 'ogre_config'; print OgreConfig.get_top_dir"`
-OGRE_INC = `ruby -e "require 'ogre_config'; print OgreConfig.get_inc_flags"`
-
-SWIGFLAGS = "-ruby -c++ #{BULLET_INC} #{OGRE_INC} -I../src/ -I#{BULLET_TOP}/bindings/bullet/interface -I#{OGRE_TOP}/bindings/ogre/interface -autorename"
+SWIGFLAGS = "-ruby -c++ #{Ruby::Bullet::get_inc_flags} #{Ruby::Ogre::get_inc_flags} -I../src/ -I#{Ruby::Bullet::get_top_path}/bindings/bullet/interface -I#{Ruby::Ogre::get_top_path}/bindings/ogre/interface -autorename"
 
 
 TARGET = 'teienlib_wrap.cpp'

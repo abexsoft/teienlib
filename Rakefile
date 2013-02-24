@@ -1,10 +1,9 @@
-require "bundler/gem_tasks"
 require 'rake/clean'
 
 DLEXT = RbConfig::MAKEFILE_CONFIG['DLEXT']
 
 desc 'Compile a teienlib extension library'
-task "compile" => ["lib/teienlib.#{DLEXT}"] 
+task "build" => ["lib/teienlib.#{DLEXT}"] 
 
 ## lib/*.#{DLEXT}
 file "lib/teienlib.#{DLEXT}" => "ext/teienlib/teienlib.#{DLEXT}" do |f|

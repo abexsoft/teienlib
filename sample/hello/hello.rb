@@ -6,7 +6,7 @@ require "ogre"
 require "ois"
 require "ogrebites"
 require "procedural"
-require "ogre_config"
+require "ruby-ogre"
 
 require_relative "ui_listener"
 require_relative "camera_mover"
@@ -61,7 +61,7 @@ class World < Ogre::FrameListener
     pluginDir += "/" if (pluginDir.length > 0) && (pluginDir[-1] != '/') 
     cfg.each_settings {|secName, keyName, valueName|
       fullPath = pluginDir + valueName
-      fullPath.sub!("<SystemPluginFolder>", OgreConfig::get_plugin_folder)
+      fullPath.sub!("<SystemPluginFolder>", Ruby::Ogre::get_plugin_folder)
       @root.load_plugin(fullPath) if (keyName == "Plugin")
     }
 
@@ -73,7 +73,7 @@ class World < Ogre::FrameListener
     cfg.each_settings {|secName, keyName, valueName|
       next if (keyName == "ResourceFolder")
       fullPath = resourceDir + valueName
-      fullPath.sub!("<SystemResourceFolder>", OgreConfig::get_resource_folder)
+      fullPath.sub!("<SystemResourceFolder>", Ruby::Ogre::get_resource_folder)
       Ogre::ResourceGroupManager::get_singleton().add_resource_location(fullPath, 
                                                                         keyName, 
                                                                         secName)
